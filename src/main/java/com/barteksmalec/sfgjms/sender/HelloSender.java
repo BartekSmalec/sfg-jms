@@ -15,8 +15,6 @@ import javax.jms.Message;
 import javax.jms.Session;
 import java.util.UUID;
 
-import static com.barteksmalec.sfgjms.config.JmsConfig.messageConverter;
-
 @RequiredArgsConstructor
 @Component
 public class HelloSender {
@@ -32,7 +30,7 @@ public class HelloSender {
                 .id(UUID.randomUUID())
                 .message("Hello World")
                 .build();
-        jmsTemplate.setMessageConverter(messageConverter());
+        //jmsTemplate.setMessageConverter(messageConverter());
         jmsTemplate.convertAndSend(JmsConfig.MY_QUEUE, message);
 
         System.out.println("Message sent!");
@@ -40,7 +38,7 @@ public class HelloSender {
 
     @Scheduled(fixedRate = 2000)
     public void sendAndReceiveMessage() throws JMSException {
-        System.out.println("I'm sending message");
+        System.out.println("Sending hello");
 
         HelloWorldMessage message = HelloWorldMessage.builder()
                 .id(UUID.randomUUID())
