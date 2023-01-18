@@ -9,12 +9,14 @@ import org.springframework.jms.support.converter.MessageType;
 @Configuration
 public class JmsConfig {
 
+    public static final String MY_QUEUE = "my-hello-world";
+
     @Bean
     public MessageConverter messageConverter() {
         MappingJackson2MessageConverter messageConverter = new MappingJackson2MessageConverter();
         messageConverter.setTargetType(MessageType.TEXT);
         messageConverter.setTypeIdPropertyName("_type");
-
+        System.out.println("Message converter used !");
         return messageConverter;
     }
 }
