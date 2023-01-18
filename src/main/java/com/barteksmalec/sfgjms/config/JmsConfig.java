@@ -10,9 +10,11 @@ import org.springframework.jms.support.converter.MessageType;
 public class JmsConfig {
 
     public static final String MY_QUEUE = "my-hello-world";
+    public static final String MY_SEND_RCV_QUEUE = "replay-back";
+
 
     @Bean
-    public MessageConverter messageConverter() {
+    public static MessageConverter messageConverter() {
         MappingJackson2MessageConverter messageConverter = new MappingJackson2MessageConverter();
         messageConverter.setTargetType(MessageType.TEXT);
         messageConverter.setTypeIdPropertyName("_type");
