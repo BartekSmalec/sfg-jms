@@ -60,6 +60,6 @@ public class HelloSender {
             }
         });
 
-        System.out.println("Replay: " + rcvMessage.getBody(String.class));
+        System.out.println("Replay: " + rcvMessage.toString());
     }
 }
